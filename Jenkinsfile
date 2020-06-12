@@ -50,7 +50,7 @@ pipeline {
                         } catch (err) {
                             echo: 'caught error: $err'
                         }
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_host \"docker run --restart always --name train-schedule -p 8081:8081 -d willbla/train-schedule:${env.BUILD_NUMBER}\""
+                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_host \"docker run --restart always --name train-schedule -p 8081:8080 -d willbla/train-schedule:${env.BUILD_NUMBER}\""
                     }
                 }
             }
