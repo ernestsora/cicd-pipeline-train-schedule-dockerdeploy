@@ -15,8 +15,9 @@ pipeline {
             steps {
                 script {
                     app = docker.build('errrre/train-schedule')
-                    app.inside{sh 'echo $(curl localhost:8081)'}
-                    
+                    app.inside{
+                        sh 'echo $(curl localhost:8081)'
+                    }                    
             }
         }
         stage('Push docker image') {
@@ -27,7 +28,7 @@ pipeline {
                 script {
                     app.withRegistry('https://registry.hub.docker.com', 'dockerhub_login'){
                         app.push("${env.BUILD_NUMBER}")
-                        app.push('latest')
+                        app.push("latest")
                     }
                 }                                      
             }
