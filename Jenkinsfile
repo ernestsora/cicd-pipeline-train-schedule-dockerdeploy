@@ -17,7 +17,8 @@ pipeline {
                     app = docker.build('errrre/train-schedule')
                     app.inside{
                         sh 'echo $(curl localhost:8081)'
-                    }                    
+                    } 
+                }
             }
         }
         stage('Push docker image') {
